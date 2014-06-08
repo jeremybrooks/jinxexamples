@@ -1,4 +1,10 @@
+ABOUT
+=====
+This is a project to demonstrate how to use the Jinx library (https://github.com/jeremybrooks/jinx) for the Flickr API.
 
+You will need a FLickr API key and secret. You can get one here: https://www.flickr.com/services/apps/create/apply/ Once you have a key and secret, plug them in the Main class. When you run the program, it will prompt you to authorize access, then print a list of your contacts most recent photos.
+
+This program should get you started using the Jinx API.
 
 LICENSE
 =======
