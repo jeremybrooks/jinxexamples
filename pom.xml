@@ -29,14 +29,14 @@
 
     <groupId>net.jeremybrooks</groupId>
     <artifactId>jinxexample</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
 
 
     <dependencies>
         <dependency>
             <groupId>net.jeremybrooks</groupId>
             <artifactId>jinx</artifactId>
-            <version>0.6.0</version>
+            <version>0.6.10</version>
         </dependency>
     </dependencies>
 </project>

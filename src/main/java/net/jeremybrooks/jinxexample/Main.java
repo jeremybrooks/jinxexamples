@@ -25,11 +25,13 @@ SOFTWARE.
 package net.jeremybrooks.jinxexample;
 
 import net.jeremybrooks.jinx.Jinx;
+import net.jeremybrooks.jinx.JinxConstants;
 import net.jeremybrooks.jinx.OAuthAccessToken;
 import net.jeremybrooks.jinx.api.OAuthApi;
 import net.jeremybrooks.jinx.api.PhotosApi;
 import net.jeremybrooks.jinx.response.photos.Photo;
 import net.jeremybrooks.jinx.response.photos.Photos;
+import org.scribe.model.Token;
 
 import javax.swing.JOptionPane;
 import java.awt.Desktop;
@@ -106,7 +108,8 @@ public class Main {
 	private void authorize() throws Exception {
 		jinx = new Jinx(FLICKR_API_KEY, FLICKR_API_SECRET);
 		OAuthApi oAuthApi = new OAuthApi(jinx);
-		String authUrl = oAuthApi.getOAuthRequestToken(null);
+        Token requestToken = jinx.getRequestToken();
+        String authUrl = jinx.getAuthorizationUrl(requestToken, JinxConstants.OAuthPermissions.read);
 
 		// direct the user to the authUrl, and prompt them to enter the validation code
 		int response = JOptionPane.showConfirmDialog(
@@ -120,7 +123,7 @@ public class Main {
 		if (response == JOptionPane.OK_OPTION) {
 			Desktop.getDesktop().browse(new URI(authUrl));
 			String verificationCode = JOptionPane.showInputDialog("Authorize at \n " + authUrl + "\nand then enter the validation code.");
-			OAuthAccessToken token = oAuthApi.getOAuthAccessToken(verificationCode);
+			OAuthAccessToken token = jinx.getAccessToken(requestToken, verificationCode);
 			if (token == null) {
 				JOptionPane.showMessageDialog(
 						null,
