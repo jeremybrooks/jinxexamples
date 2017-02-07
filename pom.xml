@@ -39,7 +39,7 @@
     <dependency>
       <groupId>net.jeremybrooks</groupId>
       <artifactId>jinx</artifactId>
-      <version>0.8.0</version>
+      <version>1.0.0</version>
     </dependency>
   </dependencies>
 </project>
